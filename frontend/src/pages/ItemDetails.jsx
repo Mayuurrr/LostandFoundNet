@@ -94,51 +94,76 @@ function ItemDetails() {
 
         {/* Item Details Card */}
         <div className="item-card" style={{
-          boxShadow: 'var(--shadow-md)',
-          border: '1px solid var(--border-color)',
-          borderRadius: 'var(--radius-lg)',
+          boxShadow: '0 6px 24px rgba(30,41,59,0.10)',
+          border: '1.5px solid #e2e8f0',
+          borderRadius: '1.25rem',
           background: 'var(--surface-color)',
-          padding: '1.5rem',
+          padding: '2.5rem 2rem 2rem 2rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1.5rem',
+          gap: '2rem',
+          alignItems: 'center',
+          maxWidth: 700,
+          margin: '0 auto',
         }}>
           {displayItem.image && (
-            <img
-              src={displayItem.image}
-              alt={displayItem.title}
+            <div
               style={{
                 width: '100%',
-                maxHeight: 300,
-                objectFit: 'cover',
-                borderRadius: 'var(--radius-md)',
-                marginBottom: '1rem',
+                maxWidth: 600,
+                margin: '0 auto 2rem auto',
+                aspectRatio: '16/9',
+                background: '#f3f4f6',
+                border: '1.5px solid #e2e8f0',
+                borderRadius: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden',
+                boxShadow: '0 4px 24px rgba(30,41,59,0.10)'
               }}
-            />
+            >
+              <img
+                src={displayItem.image}
+                alt={displayItem.title}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  objectFit: 'contain',
+                  display: 'block',
+                  borderRadius: '0.5rem',
+                  boxShadow: '0 2px 8px rgba(30,41,59,0.07)'
+                }}
+              />
+            </div>
           )}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h3 style={{ color: 'var(--text-primary)', fontSize: 'var(--font-size-lg)', fontWeight: 700, margin: 0 }}>
-              {displayItem.title}
-            </h3>
-            <span style={{
-              padding: '0.2rem 0.6rem',
-              borderRadius: 8,
-              backgroundColor: displayItem.type === 'lost' ? '#fee2e2' : '#dcfce7',
-              color: displayItem.type === 'lost' ? '#b91c1c' : '#15803d',
-              fontSize: 'var(--font-size-sm)',
-              fontWeight: 600,
-            }}>
-              {displayItem.type === 'lost' ? 'Lost Item' : 'Found Item'}
-            </span>
-          </div>
-          <div style={{ color: 'var(--text-secondary)', fontSize: 'var(--font-size-sm)', marginBottom: '1rem' }}>
-            Reported on {new Date(displayItem.createdAt).toLocaleDateString()}
-          </div>
-          <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
-            <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--font-size-base)', fontWeight: 600, marginBottom: '0.5rem', marginTop: 0 }}>Description</h4>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--font-size-base)', lineHeight: 'var(--line-height-normal)', margin: 0 }}>
-              {displayItem.description}
-            </p>
+          <div style={{ width: '100%', maxWidth: 540, margin: '0 auto' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+              <h3 style={{ color: 'var(--text-primary)', fontSize: '1.5rem', fontWeight: 800, margin: 0 }}>
+                {displayItem.title}
+              </h3>
+              <span style={{
+                padding: '0.25rem 0.8rem',
+                borderRadius: 8,
+                backgroundColor: displayItem.type === 'lost' ? '#fee2e2' : '#dcfce7',
+                color: displayItem.type === 'lost' ? '#b91c1c' : '#15803d',
+                fontSize: '1rem',
+                fontWeight: 700,
+                marginLeft: 12
+              }}>
+                {displayItem.type === 'lost' ? 'Lost Item' : 'Found Item'}
+              </span>
+            </div>
+            <div style={{ color: '#64748b', fontSize: '1.05rem', marginBottom: '1.5rem' }}>
+              Reported on {new Date(displayItem.createdAt).toLocaleDateString()}
+            </div>
+            <hr style={{ border: 'none', borderTop: '1.5px solid #e2e8f0', margin: '1.5rem 0' }} />
+            <div>
+              <h4 style={{ color: 'var(--text-primary)', fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.5rem', marginTop: 0 }}>Description</h4>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.08rem', lineHeight: 1.7, margin: 0 }}>
+                {displayItem.description}
+              </p>
+            </div>
           </div>
           {!isDummy && (
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem', marginTop: '0.5rem' }}>

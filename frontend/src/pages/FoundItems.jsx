@@ -53,11 +53,30 @@ function FoundItems() {
           {displayItems.map(item => (
             <Link to={`/item/${item._id}`} key={item._id} className="item-card" style={{ boxShadow: 'var(--shadow-md)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', background: 'var(--surface-color)', transition: 'box-shadow 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1.1rem', minHeight: 260 }}>
               {item.image && (
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  style={{ width: '100%', height: 120, objectFit: 'cover', borderRadius: 'var(--radius-md)', marginBottom: 8 }}
-                />
+                <div
+                  style={{
+                    width: '100%',
+                    aspectRatio: '16/9',
+                    background: '#f3f4f6',
+                    borderRadius: 'var(--radius-md)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: 8,
+                    overflow: 'hidden'
+                  }}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    style={{
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }}
+                  />
+                </div>
               )}
               <h3 style={{ fontSize: 'var(--font-size-base)', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>{item.title}</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--font-size-sm)', margin: 0 }}>{item.description}</p>
